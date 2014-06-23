@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="nekkidApp">
 	<head>
 		<meta charset="utf-8">
 		<title>Nekkid Movie Library</title>
@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/fonts/roboto-slab/robotoslab_regular_macroman/stylesheet.css">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
-	<body ng-app="nekkid">
+	<body ng-controller="MovieCtrl">
 		<h1>Nekkid Movie Library</h1>
 
 		<section>
@@ -16,15 +16,15 @@
 			<form>
 				<p>
 					<label for="name">Name</label>
-					<input type="text" name="name" id="name">
+					<input type="text" name="name" id="name" ng-model="movie.name">
 				</p>
 				<p>
 					<label for="actors">Notable Actors</label>
-					<input type="text" name="actors" id="actors">
+					<input type="text" name="actors" id="actors" ng-model="movie.actors">
 				</p>
 				<p>
 					<label for="score">Score</label>
-					<select name="score" id="score">
+					<select name="score" id="score" ng-model="movie.score">
 						<option value="0">Unrated</option>
 						<option value="1">*</option>
 						<option value="2">**</option>
@@ -33,11 +33,22 @@
 						<option value="5">*****</option>
 					</select>
 				</p>
+				<p>
+					<button ng-click="saveMovie()" class="large">Save</button>
+				</p>
 			</form>
 		</section>
 
 		<section>
 			<h2>My Movies</h2>
+			<ul ng-repeat="m in movies">
+				<li>
+					{{m.name}}
+					<small>{{m.actors}}</small>
+					<span>{{m.score}}</span>
+					<button ng-click="editMovie(m)">Edit</button>
+				</li>
+			</ul>
 		</section>
 
 		<script src="js/prefixfree.min.js"></script>
