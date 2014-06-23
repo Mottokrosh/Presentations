@@ -1,0 +1,18 @@
+/* Main CSS */
+body {
+	max-width: 800px;
+	margin: 0 auto;
+	min-height: 1200px;
+	background: #66c0de;
+	color: #fff;
+	font-family: 'robotolight', sans-serif;
+}
+a {
+	color: #ff0084;
+}
+h1, h2, h3, h4 {
+		font-family: 'roboto_slabregular', serif;
+		text-shadow: 3px 3px 0 #2488a9;
+}
+p {
+}
