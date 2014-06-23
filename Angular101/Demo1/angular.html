@@ -13,10 +13,10 @@
 
 		<section>
 			<h2>Add New Movie</h2>
-			<form>
+			<form name="AddEditForm">
 				<p>
 					<label for="name">Name</label>
-					<input type="text" name="name" id="name" ng-model="movie.name">
+					<input type="text" name="name" id="name" ng-model="movie.name" required>
 				</p>
 				<p>
 					<label for="actors">Notable Actors</label>
@@ -34,14 +34,15 @@
 					</select>
 				</p>
 				<p>
-					<button ng-click="saveMovie()" class="large">Save</button>
+					<button ng-click="saveMovie()" class="large" ng-disabled="!AddEditForm.$valid">Save</button>
 				</p>
 			</form>
 		</section>
 
 		<section>
 			<h2>My Movies</h2>
-			<ul ng-repeat="m in movies">
+			<p>Sort by: <button ng-click="order = 'name'">Name</button> <button ng-click="order = 'score'">Rating</button></p>
+			<ul ng-repeat="m in movies | orderBy: order">
 				<li>
 					{{m.name}}
 					<small>{{m.actors}}</small>
