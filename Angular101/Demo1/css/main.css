@@ -59,3 +59,7 @@ input, select {
 	color: #2488a9;
 	border-radius: 3px;
 }
+.stars img {
+	max-width: 32px;
+	height: auto;
+}

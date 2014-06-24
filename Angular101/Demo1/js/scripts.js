@@ -13,33 +13,59 @@ nekkidApp.controller('MovieCtrl', function ($scope) {
 	// Initialise our library with a couple of sample movies
 	$scope.movies = [
 		{
-			name: 'Naked Gun',
+			title: 'Naked Gun',
 			actors: 'Leslie Nielsen, Priscilla Presley',
 			score: 5
 		},
 		{
-			name: 'Xdsadsa',
+			title: 'Xdsadsa',
 			actors: 'ssadsda',
 			score: 3
 		}
 	];
 
 	// Sorting
-	$scope.predicate = 'name';
-
-	$scope.$watch('predicate', function (newVal, oldVal) {
-		console.log(newVal, oldVal);
-	});
+	$scope.predicate = 'title';
 
 	// Save Handler
 	$scope.saveMovie = function () {
-		$scope.movies.push($scope.movie);
+		// Only add if not already present
+		if ($scope.movies.indexOf($scope.movie) === -1 ) {
+			$scope.movies.push($scope.movie);
+		}
 		resetMovie();
 	};
 
 	// Edit Handler
 	$scope.editMovie = function (m) {
-		$scope.movie = angular.copy(m);
+		$scope.movie = m;
+	}
+
+	// Delete Handler
+	$scope.deleteMovie = function (m) {
+		$scope.movies.remove(m);
 	}
 
 });
+
+nekkidApp.directive('myStars', function () {
+	return {
+		restrict: 'E', // (E)lement, (A)ttribute, (C)lass
+		scope: {
+			movieScore: '=score'
+		},
+		templateUrl: 'stars.html'
+	};
+});
+
+// Handy remove-from-array-by-value helper
+Array.prototype.remove = function() {
+	var what, a = arguments, L = a.length, ax;
+	while (L && this.length) {
+		what = a[--L];
+		while ((ax = this.indexOf(what)) !== -1) {
+			this.splice(ax, 1);
+		}
+	}
+	return this;
+};
