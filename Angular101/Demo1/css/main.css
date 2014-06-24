@@ -62,4 +62,5 @@ input, select {
 .stars img {
 	max-width: 32px;
 	height: auto;
+	cursor: pointer;
 }

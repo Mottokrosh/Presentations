@@ -4,12 +4,6 @@ var nekkidApp = angular.module('nekkidApp', []);
 // Define our Main Controller
 nekkidApp.controller('MovieCtrl', function ($scope) {
 
-	function resetMovie() {
-		$scope.movie = { score: 0 };
-	}
-
-	resetMovie();
-
 	// Initialise our library with a couple of sample movies
 	$scope.movies = [
 		{
@@ -27,13 +21,18 @@ nekkidApp.controller('MovieCtrl', function ($scope) {
 	// Sorting
 	$scope.predicate = 'title';
 
+	// Handler to reset the movie form
+	$scope.resetMovie = function () {
+		$scope.movie = { score: 0 };
+	};
+
 	// Save Handler
 	$scope.saveMovie = function () {
 		// Only add if not already present
 		if ($scope.movies.indexOf($scope.movie) === -1 ) {
 			$scope.movies.push($scope.movie);
 		}
-		resetMovie();
+		$scope.resetMovie();
 	};
 
 	// Edit Handler

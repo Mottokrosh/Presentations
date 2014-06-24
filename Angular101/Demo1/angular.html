@@ -24,20 +24,11 @@
 				</p>
 				<p>
 					<label for="score">Score</label>
-					<select name="score" id="score" ng-model="movie.score">
-						<option value="0">Unrated</option>
-						<option value="1">*</option>
-						<option value="2">**</option>
-						<option value="3">***</option>
-						<option value="4">****</option>
-						<option value="5">*****</option>
-					</select>
+					<my-stars score="movie.score"></my-stars>
 				</p>
 				<p>
-					<label></label>
-					<my-stars score="movie.score"></my-stars>
-				<p>
 					<button ng-click="saveMovie()" class="large" ng-disabled="!AddEditForm.$valid">Save</button>
+					<button ng-click="resetMovie()" class="large">Cancel</button>
 				</p>
 			</form>
 		</section>
