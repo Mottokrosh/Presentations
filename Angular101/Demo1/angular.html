@@ -27,22 +27,30 @@
 					<my-stars score="movie.score"></my-stars>
 				</p>
 				<p>
-					<button ng-click="saveMovie()" class="large" ng-disabled="!AddEditForm.$valid">Save</button>
-					<button ng-click="resetMovie()" class="large">Cancel</button>
+					<label></label>
+					<span>
+						<button ng-click="saveMovie()" class="large" ng-disabled="!AddEditForm.$valid">Save</button>
+						<button ng-click="resetMovie()" class="large" ng-disabled="AddEditForm.$pristine">Cancel</button>
+					</span>
 				</p>
 			</form>
 		</section>
 
 		<section>
 			<h2>My Movies</h2>
-			<p>Sort by: <button ng-click="predicate = 'title'">Title</button> <button ng-click="predicate = 'score'">Rating</button></p>
+			<p>Sort by:
+				<button ng-click="predicate = 'title'" ng-class="{ active: predicate == 'title' }">Title</button>
+				<button ng-click="predicate = 'score'" ng-class="{ active: predicate == 'score' }">Rating</button>
+			</p>
 			<ul ng-repeat="m in movies | orderBy: predicate">
 				<li>
-					{{m.title}}
+					<span class="title">{{m.title}}</span>
 					<small>{{m.actors}}</small>
-					<span>{{m.score}}</span>
-					<button ng-click="editMovie(m)">Edit</button>
-					<button ng-click="deleteMovie(m)">&times;</button>
+					<span class="score">{{m.score}}</span>
+					<span class="actions">
+						<button ng-click="editMovie(m)">Edit</button>
+						<button ng-click="deleteMovie(m)">&times;</button>
+					</span>
 				</li>
 			</ul>
 		</section>

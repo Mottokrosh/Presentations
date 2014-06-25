@@ -2,7 +2,7 @@
 body {
 	max-width: 800px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 0 20px;
 	background: #66c0de;
 	color: #fff;
 	font-family: 'robotolight', sans-serif;
@@ -28,10 +28,18 @@ button {
 	border: none;
 	border-radius: 3px;
 	padding: 5px 10px;
+	transition: all 0.5s ease;
+}
+button[disabled] {
+	opacity: 0.5;
 }
 button.large {
 	font-size: 1.3em;
 	padding: 5px 20px;
+}
+button.active {
+	color: #2488a9;
+	background: #fff;
 }
 section {
 	border-top: 2px solid #2488a9;
@@ -47,10 +55,6 @@ form p > label {
 	flex: 1;
 	align-self: center;
 }
-form p > button {
-	flex: none;
-	margin: 0 auto;
-}
 input, select {
 	background: #d8ebf1;
 	border: none;
@@ -59,8 +63,35 @@ input, select {
 	color: #2488a9;
 	border-radius: 3px;
 }
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+li {
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid #d8ebf1;
+	padding: 10px 0;
+}
+li > * {
+	flex: 1;
+	align-self: center;
+}
+li > small, li > .title {
+	flex: 2;
+}
+li > .score {
+	text-align: center;
+}
+:focus {
+	outline-color: #ff69b4;
+}
 .stars img {
 	max-width: 32px;
 	height: auto;
 	cursor: pointer;
+}
+.actions {
+	text-align: right;
 }

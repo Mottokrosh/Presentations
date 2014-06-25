@@ -12,9 +12,14 @@ nekkidApp.controller('MovieCtrl', function ($scope) {
 			score: 5
 		},
 		{
-			title: 'Xdsadsa',
-			actors: 'ssadsda',
-			score: 3
+			title: 'Dracula: Dead and Loving It',
+			actors: 'Leslie Nielsen, Mel Brooks, Peter MacNicol',
+			score: 4
+		},
+		{
+			title: 'Airplane!',
+			actors: 'Robert Hays, Julie Hagerty, Leslie Nielsen',
+			score: 5
 		}
 	];
 
