@@ -46,7 +46,7 @@
 				<li>
 					<span class="title">{{m.title}}</span>
 					<small>{{m.actors}}</small>
-					<span class="score">{{m.score}}</span>
+					<span class="score">{{m.score | humanScore}}</span>
 					<span class="actions">
 						<button ng-click="editMovie(m)">Edit</button>
 						<button ng-click="deleteMovie(m)">&times;</button>

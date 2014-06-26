@@ -62,6 +62,14 @@ nekkidApp.directive('myStars', function () {
 	};
 });
 
+nekkidApp.filter('humanScore', function () {
+	var map = ['Unrated', 'Rubbish', 'Poor', 'Alright', 'Great', 'Sweeeet!'];
+	return function (score) {
+		score = parseInt(score, 10);
+		return map[score] ? map[score] : score;
+	};
+});
+
 // Handy remove-from-array-by-value helper
 Array.prototype.remove = function() {
 	var what, a = arguments, L = a.length, ax;

@@ -46,59 +46,70 @@
 					<h1>AngularJS 101</h1>
 					<h3>An Introduction</h3>
 					<p>
-						<small>Created by <a href="mailto:frank@neontribe.co.uk">Frank Reding</a> / <a href="http://twitter.com/mottokrosh">@mottokrosh</a> / <a href="http://neontribe.co.uk">Neontribe</a></small>
+						<small><a href="mailto:frank@neontribe.co.uk">Frank Reding</a> / <a href="http://twitter.com/mottokrosh">@mottokrosh</a> / <a href="http://neontribe.co.uk">Neontribe</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
+					<img src="img/cover1.png">
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
+					<img src="img/cover2.png">
+				</section>
+
+				<section>
+					<h2>Demo App Name</h2>
+					<p>Names are hard</p>
+					<ol>
+						<li class="fragment">Gunimator 3000</li>
+						<li class="fragment">GunoLib</li>
+						<li class="fragment">Naked Library</li>
+					</ol>
+				</section>
+
+				<section>
+					<img src="img/nekkid1.png" style="max-height: 80%">
+					<p class="fragment">No a "To Do" App!</p>
+				</section>
+
+				<section>
+					<pre><code data-trim contenteditable style="max-height: 600px">
+&lt;!doctype html>
+&lt;html lang="en">
+	&lt;head>
+		&lt;meta charset="utf-8">
+		&lt;title>Nekkid Movie Library&lt;/title>
+		&lt;link rel="stylesheet" href="css/normalize.css">
+		&lt;link rel="stylesheet" href="css/fonts/roboto/roboto_light_macroman/stylesheet.css">
+		&lt;link rel="stylesheet" href="css/fonts/roboto-slab/robotoslab_regular_macroman/stylesheet.css">
+		&lt;link rel="stylesheet" href="css/main.css">
+	&lt;/head>
+	&lt;body>
+		&lt;h1>Nekkid Movie Library&lt;/h1>
+		&lt;section>
+			&lt;h2>Add New Movie&lt;/h2>
+			&lt;form name="AddEditForm">
+				&lt;p>
+					&lt;label for="name">Title&lt;/label>
+					&lt;input type="text" name="title" id="title" ng-model="movie.title" required>
+				&lt;/p>
+				[...]
+			&lt;/form>
+		&lt;/section>
+		&lt;section>
+			&lt;h2>My Movies&lt;/h2>
+			&lt;p>Sort by:
+				&lt;button>Title&lt;/button>
+				&lt;button>Rating&lt;/button>
+			&lt;/p>
+			&lt;ul>
+				&lt;li>[...]&lt;/li>
+			&lt;/ul>
+		&lt;/section>
+	&lt;/body>
+&lt;/html>
+					</code></pre>
 				</section>
 
 				<section>
