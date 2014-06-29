@@ -57,11 +57,11 @@
 					</p>
 				</section>
 
-				<section>
+				<section data-transition="zoom">
 					<img src="img/cover1.png">
 				</section>
 
-				<section>
+				<section data-transition="zoom">
 					<img src="img/cover2.png">
 				</section>
 
@@ -77,46 +77,177 @@
 
 				<section>
 					<img src="img/nekkid1.png" style="max-height: 80%">
-					<p class="fragment">No a "To Do" App!</p>
+					<p class="fragment">Not a "To Do" App!</p>
 				</section>
 
 				<section>
-					<pre><code data-trim contenteditable style="max-height: 600px">
+					<pre><code data-trim style="max-height: 600px">
 &lt;!doctype html>
 &lt;html lang="en">
-	&lt;head>
-		&lt;meta charset="utf-8">
-		&lt;title>Nekkid Movie Library&lt;/title>
-		&lt;link rel="stylesheet" href="css/normalize.css">
-		&lt;link rel="stylesheet" href="css/fonts/roboto/roboto_light_macroman/stylesheet.css">
-		&lt;link rel="stylesheet" href="css/fonts/roboto-slab/robotoslab_regular_macroman/stylesheet.css">
-		&lt;link rel="stylesheet" href="css/main.css">
-	&lt;/head>
-	&lt;body>
-		&lt;h1>Nekkid Movie Library&lt;/h1>
-		&lt;section>
-			&lt;h2>Add New Movie&lt;/h2>
-			&lt;form name="AddEditForm">
-				&lt;p>
-					&lt;label for="name">Title&lt;/label>
-					&lt;input type="text" name="title" id="title" ng-model="movie.title" required>
-				&lt;/p>
-				[...]
-			&lt;/form>
-		&lt;/section>
-		&lt;section>
-			&lt;h2>My Movies&lt;/h2>
-			&lt;p>Sort by:
-				&lt;button>Title&lt;/button>
-				&lt;button>Rating&lt;/button>
-			&lt;/p>
-			&lt;ul>
-				&lt;li>[...]&lt;/li>
-			&lt;/ul>
-		&lt;/section>
-	&lt;/body>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Nekkid Movie Library&lt;/title>
+    &lt;link rel="stylesheet" href="css/main.css">
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Nekkid Movie Library&lt;/h1>
+    &lt;section>
+      &lt;h2>Add New Movie&lt;/h2>
+      &lt;form name="AddEditForm">[...]&lt;/form>
+    &lt;/section>
+    &lt;section>
+      &lt;h2>My Movies&lt;/h2>
+      &lt;p>Sort by:
+        &lt;button>Title&lt;/button>
+        &lt;button>Rating&lt;/button>
+      &lt;/p>
+      &lt;ul>
+        &lt;li>[...]&lt;/li>
+      &lt;/ul>
+    &lt;/section>
+  &lt;/body>
 &lt;/html>
 					</code></pre>
+				</section>
+
+				<section>
+					<h2>Let's add the Angular Library</h2>
+					<img src="img/lib.jpg">
+				</section>
+
+				<section>
+					<pre><code data-trim style="max-height: 600px">
+&lt;body>
+  &lt;h1>Nekkid Movie Library&lt;/h1>
+  &lt;section>
+    &lt;h2>Add New Movie&lt;/h2>
+    &lt;form name="AddEditForm">[...]&lt;/form>
+  &lt;/section>
+  &lt;section>
+    &lt;h2>My Movies&lt;/h2>
+    &lt;p>Sort by:
+      &lt;button>Title&lt;/button>
+      &lt;button>Rating&lt;/button>
+    &lt;/p>
+    &lt;ul>
+      &lt;li>[...]&lt;/li>
+    &lt;/ul>
+  &lt;/section>
+  &lt;script src="js/angular.min.js">&lt;/script>
+  &lt;script src="js/nekkid.js">&lt;/script>
+&lt;/body>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Declare App</h2>
+					<pre><code data-trim>&lt;html lang="en" ng-app="nekkidApp"></code></pre>
+					<p class="fragment">And in our `nekkid.js` file:</p>
+					<pre class="fragment"><code class="javascript">var nekkidApp = angular.module('nekkidApp', []);</code></pre>
+
+					<aside class="notes">
+						- everything is a module<br>
+						- empty array for dependency injection
+					</aside>
+				</section>
+
+				<section>
+					<h2>Declare a Controller</h2>
+					<pre><code>&lt;body ng-controller="MovieCtrl"></code></pre>
+					<p class="fragment">In `nekkid.js`:</p>
+					<pre class="fragment"><code data-trim class="javascript">
+nekkidApp.controller('MovieCtrl', function ($scope) {
+});
+					</code></pre>
+				</section>
+
+				<section data-background="img/scope.jpg"></section>
+
+				<section>
+					<h2>Movie List</h2>
+					<p><img src="img/nekkid2.png"></p>
+				</section>
+
+				<section>
+					<pre><code data-trim style="max-height: 600px" class="javascript">
+nekkidApp.controller('MovieCtrl', function ($scope) {
+  // Initialise our library with a couple of sample movies
+  $scope.movies = [
+    {
+      title: 'Naked Gun',
+      actors: 'Leslie Nielsen, Priscilla Presley',
+      score: 5
+    },
+    {
+      title: 'Dracula: Dead and Loving It',
+      actors: 'Leslie Nielsen, Mel Brooks, Peter MacNicol',
+      score: 4
+    },
+    {
+      title: 'Airplane!',
+      actors: 'Robert Hays, Julie Hagerty, Leslie Nielsen',
+      score: 5
+    }
+  ];
+
+  // Sorting
+  $scope.predicate = 'title';
+});
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>HTML</h2>
+					<pre style="width: 1140px; margin-left: -90px;"><code data-trim>
+&lt;p>Sort by:
+  &lt;button ng-click="predicate = 'title'" ng-class="{ active: predicate == 'title' }">Title&lt;/button>
+  &lt;button ng-click="predicate = 'score'" ng-class="{ active: predicate == 'score' }">Rating&lt;/button>
+&lt;/p>
+&lt;ul ng-repeat="m in movies | orderBy: predicate">
+  &lt;li>
+    &lt;span class="title">{{m.title}}&lt;/span>
+    &lt;small>{{m.actors}}&lt;/small>
+    &lt;span class="score">{{m.score | humanScore}}&lt;/span>
+    &lt;span class="actions">
+      &lt;button ng-click="editMovie(m)">Edit&lt;/button>
+      &lt;button ng-click="deleteMovie(m)">&times;&lt;/button>
+    &lt;/span>
+  &lt;/li>
+&lt;/ul>
+					</code></pre>
+
+					<aside class="notes">
+						I know what you're going to say: custom filters? No way!
+					</aside>
+				</section>
+
+				<section data-background="img/no_way.jpg"></section>
+
+				<section>
+					<h2>Defining a Custom Filter</h2>
+					<pre><code data-trim class="javascript">
+nekkidApp.filter('humanScore', function () {
+  var map = ['Unrated', 'Rubbish', 'Poor', 'Alright', 'Great', 'Sweeeet!'];
+  return function (score) {
+    score = parseInt(score, 10);
+    return map[score] ? map[score] : score;
+  };
+});
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Custom Filter</h2>
+					<p><img src="img/nekkid2.png"></p>
+				</section>
+
+				<section>
+					<img src="img/prime_directive.jpg">
+				</section>
+
+				<section>
+					<h2>Custom Directive</h2>
+					<p><img src="img/nekkid3.png"></p>
 				</section>
 
 				<section>
@@ -145,42 +276,6 @@
 						1. a man holding and cultivating a small landed estate; a freeholder.<br>
 						2. a servant in a royal or noble household, ranking between a sergeant and a groom or a squire and a page.</p>
 					</aside>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
 				</section>
 
 				<section id="transitions">
